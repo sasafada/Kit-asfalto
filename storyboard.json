@@ -1,0 +1,134 @@
+{
+  "id": "exemplo-asfalto",
+  "config": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInFrames": 300,
+    "corCeu": "#87ceeb",
+    "fov": 42,
+    "iluminacao": {
+      "tipo": "dia",
+      "transicoes": [
+        { "frame": 0, "tipo": "externo_dia", "intensidade": 1.0 },
+        { "frame": 200, "tipo": "golden_hour", "intensidade": 1.2, "corSol": "#ffaa66" }
+      ]
+    }
+  },
+  "camera": {
+    "inicial": { "pos": [0, 14, 28], "alvo": [0, 2, 0] },
+    "keyframes": [
+      { "frame": 0, "pos": [0, 14, 28], "lookAt": [0, 2, 0], "curva": "ss" },
+      { "frame": 90, "pos": [8, 10, 20], "lookAt": [0, 1, 0], "curva": "ss" },
+      { "frame": 90, "pos": [8, 10, 20], "lookAt": [0, 1, 0], "curva": "pop" },
+      { "frame": 150, "pos": [-5, 6, 12], "lookAt": [-12, 1.5, 5], "curva": "ss" },
+      { "frame": 180, "pos": [-8, 4, 8], "lookAt": [-12, 1.5, 5], "curva": "kick" },
+      { "frame": 180, "pos": [-8, 4, 8], "lookAt": [18, 1, -5], "curva": "ss" },
+      { "frame": 210, "pos": [15, 8, -8], "lookAt": [18, 1, -5], "curva": "ss" },
+      { "frame": 240, "pos": [20, 6, -3], "lookAt": [22, 0.5, -5], "curva": "pop" },
+      { "frame": 240, "pos": [20, 6, -3], "lookAt": [0, 0, 0], "curva": "ss" },
+      { "frame": 300, "pos": [0, 18, 30], "lookAt": [0, 0, 0], "curva": "sss" }
+    ]
+  },
+  "mundo": { "tipo": "externo", "hora": "dia" },
+  "assets": [
+    { "tipo": "chao", "config": { "tamanho": 200, "textura": "terra" } },
+    { "tipo": "misturador", "id": "usina_misturador", "pos": [-25, 0, 10], "config": { "raio": 1.8, "conteudo": "asfalto", "velocidade": 100 } },
+    { "tipo": "tanque", "id": "usina_tanque_asfalto", "pos": [-25, 0, 15], "config": { "raio": 1.5, "altura": 4, "liquido": "asfalto", "nivel": 0.8 } },
+    { "tipo": "tanque", "id": "usina_tanque_oleo", "pos": [-28, 0, 15], "config": { "raio": 1, "altura": 3, "liquido": "oleo", "casca": "metal", "nivel": 0.6 } },
+    { "tipo": "silo", "id": "usina_silo_brita", "pos": [-30, 0, 5], "config": { "raio": 1.8, "altura": 12, "nivel": 0.9 } },
+    { "tipo": "silo", "id": "usina_silo_areia", "pos": [-30, 0, 0], "config": { "raio": 1.8, "altura": 12, "nivel": 0.8 } },
+    { "tipo": "misturador", "id": "paver", "pos": [-10, 0, 0], "config": { "raio": 1.2, "conteudo": "asfalto", "velocidade": 80 } },
+    { "tipo": "tanque", "id": "rolo_tanque_agua", "pos": [5, 0, 3], "config": { "raio": 0.8, "altura": 1.5, "liquido": "agua", "nivel": 0.7 } },
+    { "tipo": "monte", "id": "monte_brita", "pos": [-15, 0, -8], "config": { "material": "brita", "raio": 2.5, "progress": 1 } },
+    { "tipo": "monte", "id": "monte_areia", "pos": [-10, 0, -8], "config": { "material": "areia", "raio": 2, "progress": 1 } },
+    { "tipo": "monte", "id": "monte_asfalto_pronto", "pos": [15, 0, 2], "config": { "material": "asfalto", "raio": 1.5, "progress": 0 } },
+    { "tipo": "escavadeira", "id": "escavadeira", "pos": [18, 0, -5], "config": { "tamanho": 1, "cor": "#f2c94c", "cicloDuracao": 3.5 } },
+    { "tipo": "fabrica", "id": "fabrica_premoldados", "pos": [35, 0, -15], "config": { "tamanho": 0.8 } },
+    { "tipo": "arvore", "pos": [-40, 0, 20], "config": { "tipo": "pinheiro", "tamanho": 2 } },
+    { "tipo": "arvore", "pos": [-45, 0, -15], "config": { "tipo": "frondosa", "tamanho": 1.5 } },
+    { "tipo": "arvore", "pos": [40, 0, 25], "config": { "tipo": "pinheiro", "tamanho": 1.8 } },
+    { "tipo": "arvore", "pos": [45, 0, -20], "config": { "tipo": "frondosa", "tamanho": 1.3 } },
+    { "tipo": "casa", "pos": [-35, 0, -25], "config": { "tipo": "simples", "tamanho": 1.2, "cor": "#c8a888" } },
+    { "tipo": "casa", "pos": [38, 0, 20], "config": { "tipo": "simples", "tamanho": 1, "cor": "#a8c888" } },
+    { "tipo": "nuvem", "pos": [-50, 35, -20], "config": { "tamanho": 8, "altura": 35, "velocidade": 0.3 } },
+    { "tipo": "nuvem", "pos": [20, 40, 30], "config": { "tamanho": 6, "altura": 40, "velocidade": 0.25 } },
+    { "tipo": "nuvem", "pos": [60, 30, -10], "config": { "tamanho": 10, "altura": 30, "velocidade": 0.4 } }
+  ],
+  "registros": [
+    { "id": "usina_misturador" },
+    { "id": "usina_tanque_asfalto" },
+    { "id": "usina_silo_brita" },
+    { "id": "usina_silo_areia" },
+    { "id": "paver" },
+    { "id": "rolo_tanque_agua" },
+    { "id": "monte_brita" },
+    { "id": "monte_areia" },
+    { "id": "monte_asfalto_pronto" },
+    { "id": "escavadeira" },
+    { "id": "rua_final" }
+  ],
+  "animacoes": [
+    { "alvo": "monte_asfalto_pronto", "propriedade": "escala", "valor": { "x": 1, "y": 1, "z": 1 }, "duracao": 6, "curva": "ss", "inicio": 4 },
+    { "alvo": "rolo_tanque_agua", "propriedade": "escala", "valor": { "x": 1, "y": 0.3, "z": 1 }, "duracao": 8, "curva": "ss", "inicio": 2 }
+  ],
+  "etapas": [
+    { "alvo": "rua_final", "progressInicial": 0, "progressFinal": 1, "duracao": 8, "curva": "ss", "inicio": 2 }
+  ],
+  "fluxos": [
+    { "material": "brita", "origem": [-30, 8, 5], "destino": [-25, 3, 10], "taxa": 40, "gravidade": 9.8, "duracao": 10, "inicio": 0.5, "tamanho": 0.06, "velocidade": 6, "espalhamento": 0.2 },
+    { "material": "areia", "origem": [-30, 8, 0], "destino": [-25, 3, 10], "taxa": 30, "gravidade": 9.8, "duracao": 10, "inicio": 1, "tamanho": 0.04, "velocidade": 5, "espalhamento": 0.25 },
+    { "material": "asfalto", "origem": [-25, 3, 10], "destino": [-10, 2, 0], "taxa": 25, "gravidade": 2, "duracao": 8, "inicio": 2, "tamanho": 0.08, "velocidade": 3, "espalhamento": 0.1, "cor": "#1a1a1a" },
+    { "material": "asfalto", "origem": [-10, 1.5, 0], "destino": [-5, 0.1, 0], "taxa": 50, "gravidade": 5, "duracao": 5, "inicio": 3.5, "tamanho": 0.05, "velocidade": 2, "espalhamento": 0.4 },
+    { "material": "brita", "origem": [18, 4, -5], "destino": [22, 3, -3], "taxa": 35, "gravidade": 9.8, "duracao": 4, "inicio": 5.5, "tamanho": 0.07, "velocidade": 4, "espalhamento": 0.3 },
+    { "material": "fumaca", "origem": [-25, 6, 10], "taxa": 15, "gravidade": -0.3, "duracao": 10, "inicio": 0, "tamanho": 0.3, "velocidade": 1, "espalhamento": 0.5 },
+    { "material": "vapor", "origem": [-10, 2, 0], "taxa": 20, "gravidade": -0.8, "duracao": 6, "inicio": 3, "tamanho": 0.2, "velocidade": 1.5, "espalhamento": 0.6 },
+    { "material": "poeira", "origem": [18, 1, -5], "taxa": 25, "gravidade": 2, "duracao": 5, "inicio": 5.5, "tamanho": 0.1, "velocidade": 2, "espalhamento": 0.8 }
+  ],
+  "rastros": [
+    { "tipo": "brita", "caminho": [[-15, 0.1, -8], [-20, 0.1, -2], [-25, 0.1, 5]], "largura": 2.5, "duracao": 3, "inicio": 1, "fadeOut": 8 },
+    { "tipo": "asfalto_quente", "caminho": [[-10, 0.05, 0], [0, 0.05, 0], [10, 0.05, 0], [20, 0.05, 0]], "largura": 3.5, "duracao": 6, "inicio": 3, "fadeOut": 0 },
+    { "tipo": "asfalto_quente", "caminho": [[-5, 0.05, 2], [5, 0.05, 2], [15, 0.05, 2], [22, 0.05, 2]], "largura": 2, "duracao": 5, "inicio": 4.5, "fadeOut": 0 },
+    { "tipo": "terra_revolvida", "caminho": [[15, 0.1, -8], [18, 0.1, -5], [22, 0.1, -3]], "largura": 3, "duracao": 2, "inicio": 5.5, "fadeOut": 10 },
+    { "tipo": "marca_pneu", "caminho": [[-25, 0.1, 10], [-15, 0.1, 2], [-10, 0.1, 0]], "largura": 0.8, "duracao": 2, "inicio": 2.5, "fadeOut": 5 },
+    { "tipo": "marca_pneu", "caminho": [[-10, 0.1, 0], [-15, 0.1, 2], [-25, 0.1, 10]], "largura": 0.8, "duracao": 2, "inicio": 4.5, "fadeOut": 5 }
+  ],
+  "personagens": [
+    { "id": "operador_paver", "tipo": "operador_paver", "pos": [-10, 0, 1.5], "clip": "inspect", "escala": 1, "olharPara": [-5, 0.5, 0] },
+    { "id": "operador_rolo", "tipo": "operador_rolo", "pos": [5, 0, 4], "clip": "idle", "escala": 1 },
+    { "id": "operador_escavadeira", "tipo": "operador_escavadeira", "pos": [18, 0, -3.5], "clip": "idle", "escala": 1 },
+    { "id": "mestre_obras", "tipo": "mestre_obras", "pos": [0, 0, -3], "clip": "point", "escala": 1, "olharPara": [10, 0, 0] },
+    { "id": "topografo", "tipo": "topografo", "pos": [-8, 0, -4], "clip": "inspect", "escala": 1 },
+    { "id": "motorista_caminhao1", "tipo": "motorista_caminhao", "pos": [-15, 0, 5], "clip": "idle", "escala": 1 },
+    { "id": "motorista_caminhao2", "tipo": "motorista_caminhao", "pos": [22, 0, -3], "clip": "wave", "escala": 1 }
+  ],
+  "legendas": [
+    {
+      "tipo": "karaoke",
+      "palavras": [
+        { "texto": "Como", "inicio": 0.5, "fim": 0.9 },
+        { "texto": "asfaltar", "inicio": 0.9, "fim": 1.4 },
+        { "texto": "1km", "inicio": 1.4, "fim": 1.8 },
+        { "texto": "em", "inicio": 1.8, "fim": 2.0 },
+        { "texto": "4", "inicio": 2.0, "fim": 2.2 },
+        { "texto": "horas", "inicio": 2.2, "fim": 2.7 },
+        { "texto": "?", "inicio": 2.7, "fim": 3.0 },
+        { "texto": "Brita", "inicio": 3.2, "fim": 3.7 },
+        { "texto": "e", "inicio": 3.7, "fim": 3.85 },
+        { "texto": "areia", "inicio": 3.85, "fim": 4.3 },
+        { "texto": "misturadas", "inicio": 4.3, "fim": 5.0 },
+        { "texto": "com", "inicio": 5.0, "fim": 5.15 },
+        { "texto": "asfalto", "inicio": 5.15, "fim": 5.7 },
+        { "texto": "quente", "inicio": 5.7, "fim": 6.2 },
+        { "texto": "Paver", "inicio": 6.5, "fim": 7.0 },
+        { "texto": "espalha", "inicio": 7.0, "fim": 7.4 },
+        { "texto": "rolo", "inicio": 7.4, "fim": 7.8 },
+        { "texto": "compacta", "inicio": 7.8, "fim": 8.4 },
+        { "texto": "Rua", "inicio": 8.5, "fim": 9.0 },
+        { "texto": "pronta", "inicio": 9.0, "fim": 9.5 },
+        { "texto": "!", "inicio": 9.5, "fim": 9.8 }
+      ],
+      "props": { "estilo": "tiktok", "posY": 0.78, "escalaHighlight": 1.18 }
+    }
+  ]
+}

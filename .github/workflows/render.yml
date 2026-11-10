@@ -1,0 +1,70 @@
+name: Render Video
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # manual trigger
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Render video
+        uses: remotion/render-action@v1
+        with:
+          entry-point: src/index.tsx
+          composition: main
+          output: video.mp4
+          codec: h264
+          concurrency: 4
+          image-format: jpeg
+          jpeg-quality: 90
+          scale: 1
+          ffmpeg-override: "-crf 18 -preset slow -pix_fmt yuv420p -movflags +faststart"
+
+      - name: Upload video artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-asfalto
+          path: video.mp4
+          retention-days: 7
+
+      - name: Render thumbnails
+        uses: remotion/render-action@v1
+        with:
+          entry-point: src/index.tsx
+          composition: thumb
+          output: thumb_youtube.png
+          codec: png
+          scale: 1
+
+      - name: Render vertical thumbnail
+        uses: remotion/render-action@v1
+        with:
+          entry-point: src/index.tsx
+          composition: thumb_vertical
+          output: thumb_vertical.png
+          codec: png
+          scale: 1
+
+      - name: Upload thumbnails
+        uses: actions/upload-artifact@v4
+        with:
+          name: thumbnails
+          path: |
+            thumb_youtube.png
+            thumb_vertical.png
+          retention-days: 7
